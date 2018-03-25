@@ -6,15 +6,7 @@
 <br>
 <div class="row">
     <div class="col-md-12">
-        <a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
-            <div class="pull-left">
-                <div class="list-group-item-heading">{{ recipe.name }}</div>
-                <div class="list-group-item-text">{{ recipe.description }}</div>
-            </div>
-            <span class="pull-right">
-                <img [src]="recipe.imgPath" class="img-responsive" style="max-height: 50px;">
-            </span>
-        </a>
+        <app-recipe-item (showRecipeEvent)="showClickRecipe(recipeEl)" *ngFor="let recipeEl of recipes" [recipe]="recipeEl"></app-recipe-item>
     </div>
 </div>
 <br>

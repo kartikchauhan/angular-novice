@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
 
 @Component({
-      selector: 'app-root',
-      templateUrl: 'app.component.html',
-      styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
-      title = 'app';
+
+    currentTabNumber: number = 1;
+
+    switchToClikedTab(currentTab)
+    {
+        console.log("In switchToClickedTab " + currentTab);
+        this.currentTabNumber = currentTab;
+    }
 }

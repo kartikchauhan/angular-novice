@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'app-header',
@@ -8,5 +8,11 @@ import { Component } from "@angular/core";
 
 export class HeaderComponent
 {
+    @Output() currentTab = new EventEmitter();
 
+    openTab(currentTab: number)
+    {
+        console.log(currentTab + "clicked");
+        this.currentTab.emit(currentTab);
+    }
 }
