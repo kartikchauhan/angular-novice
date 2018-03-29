@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
     selector: 'app-recipe-list',
@@ -8,17 +9,25 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent {
 
-    recipes: Recipe[] = [
-        new Recipe('recipe 1', 'test description', 'http://www.sdsmasala.com/wp-content/uploads/2016/12/shahi-paneer.jpg'),
-        new Recipe('recipe 2', 'test description 2', 'http://www.sdsmasala.com/wp-content/uploads/2016/12/shahi-paneer.jpg')
-    ];
+    recipes: Recipe[];
 
-    @Output() showRecipeEvent = new EventEmitter<Recipe>();
-
-    showClickRecipe(currentRecipe: Recipe)
+    constructor(private recipeService: RecipeService)
     {
-        this.showRecipeEvent.emit(currentRecipe);
+        this.recipes = this.recipeService.getRecipes();
     }
+
+    // recipes: Recipe[] = [
+    //     new Recipe('recipe 1', 'test description', 'http://www.sdsmasala.com/wp-content/uploads/2016/12/shahi-paneer.jpg'),
+    //     new Recipe('recipe 2', 'test description 2', 'http://www.sdsmasala.com/wp-content/uploads/2016/12/shahi-paneer.jpg')
+    // ];
+
+    // @Output() showRecipeEvent = new EventEmitter<Recipe>();
+
+    // showClickRecipe(currentRecipe: Recipe)
+    // {
+    //     this.showRecipeEvent.emit(currentRecipe);
+    // }
+
 
 
 }

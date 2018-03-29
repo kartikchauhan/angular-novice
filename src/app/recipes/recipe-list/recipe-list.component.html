@@ -6,7 +6,7 @@
 <br>
 <div class="row">
     <div class="col-md-12">
-        <app-recipe-item (showRecipeEvent)="showClickRecipe(recipeEl)" *ngFor="let recipeEl of recipes" [recipe]="recipeEl"></app-recipe-item>
+        <app-recipe-item *ngFor="let recipeEl of recipes" [recipe]="recipeEl"></app-recipe-item>
     </div>
 </div>
 <br>
