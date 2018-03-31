@@ -8,11 +8,11 @@ import { Component, Output, EventEmitter } from "@angular/core";
 
 export class HeaderComponent
 {
-    @Output() currentTab = new EventEmitter();
+    // @Output() currentTab = new EventEmitter();
 
-    openTab(currentTab: number)
-    {
-        console.log(currentTab + "clicked");
-        this.currentTab.emit(currentTab);
-    }
+    // openTab(currentTab: number)
+    // {
+    //     console.log(currentTab + "clicked");
+    //     this.currentTab.emit(currentTab);
+    // }
 }

@@ -1,12 +1,14 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand" href="#">Angular Novice</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a>Home</a></li>
-            <li class="active"><a (click)="openTab(1)"> Recipes </a></li>
-            <li><a (click)="openTab(2)"> Shopping List </a></li>
+            <li routerLinkActive="active"><a routerLink="recipes" style="cursor: pointer;"> Recipes </a>
+            <li routerLinkActive="active"><a routerLink="shopping-list" style="cursor: pointer;"> Shopping List</a>
+            <!-- <li class="active"><a (click)="openTab(1)"> Recipes </a></li>
+            <li><a (click)="openTab(2)"> Shopping List </a></li> -->
         </ul>
     </div>
 </nav>
