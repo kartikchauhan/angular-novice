@@ -10,7 +10,7 @@ import { RecipeService } from '../../recipe.service';
 
 export class RecipeItemComponent {
     @Input() recipe: Recipe;
-
+    @Input() index: number;
     // @Output() showRecipeEvent = new EventEmitter();
 
     constructor(private recipeService: RecipeService){}

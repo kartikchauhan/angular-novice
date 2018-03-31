@@ -2,18 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
+import { ActivatedRoute, Router, Params } from '@angular/router';
+
 @Component({
     selector: 'app-recipe-list',
     templateUrl: './recipe-list.component.html',
     styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent {
 
+export class RecipeListComponent implements OnInit {
+
+    id: number;
+    isEdit: boolean = false;
     recipes: Recipe[];
 
-    constructor(private recipeService: RecipeService)
+    constructor(private recipeService: RecipeService, private currentRouter: ActivatedRoute, private router: Router)
     {
         this.recipes = this.recipeService.getRecipes();
+    }
+
+    ngOnInit()
+    {
+        this.currentRouter.params.subscribe(
+            (params: Params) => {
+                this.id = +params['id'];
+                this.isEdit = params['id'] != null;
+            }
+        );
+    }
+
+
+    onNewRecipe()
+    {
+        this.router.navigate(['new'], {relativeTo: this.currentRouter});
     }
 
     // recipes: Recipe[] = [
