@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-md-12">
-        <form>
+        <form (ngSubmit)="addNewIngredient(formRef)" #formRef="ngForm">
             <div class="row">
                 <div class="col-md-5 form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" #ingredientName>
+                    <label for="ingredientName">Name</label>
+                    <input type="text" class="form-control" name="ingredientName" required ngModel>
                 </div>
                 <div class="col-md-2 form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" class="form-control" #ingredientAmount>
+                    <label for="ingredientAmount">Amount</label>
+                    <input type="number" class="form-control" name="ingredientAmount" required pattern="^[1-9]+[0-9]*$" ngModel>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 form-group">
-                    <button (click)="addNewIngredient()" type="button" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!formRef.valid">Add</button>
                     <button class="btn btn-danger">Delete</button>
                     <button class="btn btn-primary">Clear</button>
                 </div>
