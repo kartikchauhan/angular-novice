@@ -10,18 +10,44 @@ import { NgForm } from '@angular/forms';
 })
 export class ShoppingEditComponent {
 
-    @ViewChild('ingredientName') ingredientName: ElementRef;
-    @ViewChild('ingredientAmount') ingredientAmount: ElementRef;
+    @ViewChild('formRef') formRef: NgForm;
+    editMode: boolean = false;
+    ingredientToUpdateIndex: number;    
+
+    // @ViewChild('ingredientName') ingredientName: ElementRef;
+    // @ViewChild('ingredientAmount') ingredientAmount: ElementRef;
 
     // @Output() addNewIngredientEvent = new EventEmitter<Ingredient>();
 
     constructor(private shoppinglistService: ShoppinglistService){}
+
+    ngOnInit()
+    {
+        this.shoppinglistService.updatingIngredient.subscribe(
+            (index: number) => {
+                this.editMode = true;
+                this.ingredientToUpdateIndex = index;
+                const ingredientToUpdate = this.shoppinglistService.getIngredientFromIndex(index);
+                this.formRef.setValue({
+                    ingredientName: ingredientToUpdate.name,
+                    ingredientAmount: ingredientToUpdate.amount
+                });                
+            }
+        );
+    }
 
     addNewIngredient(formRef: NgForm)
     {
         const formValue = formRef.value;
         console.log(formValue);
         const newIngredient = new Ingredient(formValue.ingredientName, formValue.ingredientAmount);
-        this.shoppinglistService.addNewIngredient(newIngredient);
+        if(this.editMode === true)
+        {
+            this.shoppinglistService.updateIngredient(this.ingredientToUpdateIndex, newIngredient);
+        }
+        else
+        {
+            this.shoppinglistService.addNewIngredient(newIngredient);
+        }
     }
 }

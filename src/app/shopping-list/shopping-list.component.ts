@@ -32,13 +32,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy{
         this.ingredientsSubscription.unsubscribe();
     }
 
-    // ingredients: Ingredient[] = [
-    //     new Ingredient('Apple', 4),
-    //     new Ingredient('Banana', 12)
-    // ];
-    // addIngredientToList(newIngredient:Ingredient)
-    // {
-    //     this.ingredients.push(newIngredient);
-    // }
+    updateIngredient(index: number)
+    {
+        this.shoppinglistService.onEditIngredient(index);
+    }
 
 }
